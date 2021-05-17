@@ -4,6 +4,7 @@
       <!-- key name -->
       <el-form-item>
         <el-input
+          style="width: 600px"
           ref="keyNameInput"
           :value="$util.bufToString(keyName)"
           @change='changeKeyInput'
