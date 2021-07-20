@@ -83,7 +83,8 @@
 
       <!-- current version -->
       <el-form-item :label="$t('message.pre_version')" class='current-version'>
-        <el-tag type="info">{{ appVersion }}</el-tag>
+        <el-tag type="info">{{ appVersion }}-brotli</el-tag>
+        <el-tag type="danger">This version is powered by rito01</el-tag>
 
         <a href="###" @click.stop.prevent="showHotkeys">{{ $t('message.hotkey') }}</a>
         <a href="###" @click.stop.prevent="clearCache">{{ $t('message.clear_cache') }}</a>

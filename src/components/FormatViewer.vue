@@ -32,6 +32,7 @@ import ViewerHex from '@/components/ViewerHex';
 import ViewerJson from '@/components/ViewerJson';
 import ViewerBinary from '@/components/ViewerBinary';
 import ViewerUnserialize from '@/components/ViewerUnserialize';
+import ViewerBrotli from '@/components/ViewerBrotli';
 import ViewerMsgpack from '@/components/ViewerMsgpack';
 import ViewerOverSize from '@/components/ViewerOverSize';
 
@@ -46,6 +47,7 @@ export default {
         { value: 'ViewerBinary', text: 'Binary' },
         { value: 'ViewerMsgpack', text: 'Msgpack' },
         { value: 'ViewerUnserialize', text: 'Unserialize' },
+        { value: 'ViewerBrotli', text: 'Decompress with Brotli' },
       ],
       selectStyle: {
         float: this.float,
@@ -53,7 +55,7 @@ export default {
       overSizeBytes: 20971520, // 20MB
     };
   },
-  components: {ViewerText, ViewerHex, ViewerJson, ViewerBinary, ViewerUnserialize, ViewerMsgpack, ViewerOverSize},
+  components: {ViewerText, ViewerHex, ViewerJson, ViewerBinary, ViewerUnserialize, ViewerMsgpack, ViewerOverSize, ViewerBrotli},
   props: {
     float: {default: 'right'},
     content: {default: () => Buffer.from('')},
@@ -97,6 +99,10 @@ export default {
         // php unserialize
         else if (this.$util.isPHPSerialize(this.content)) {
           this.selectedView = 'ViewerUnserialize';
+        }
+        // Brotli unserialize
+        else if (this.$util.isBrotliSerialize(this.content)) {
+          this.selectedView = 'ViewerBrotli';
         }
         // hex
         else if (!this.contentVisible) {
